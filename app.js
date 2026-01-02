@@ -246,7 +246,12 @@ function getCellFromEvent(event) {
   return { x, y };
 }
 
-canvas.addEventListener("pointerdown", (event) => {
+canvas.addEventListener(
+  "pointerdown",
+  (event) => {
+    event.preventDefault();
+    canvas.focus?.();
+    canvas.style.touchAction = "none";
   const cell = getCellFromEvent(event);
   if (!cell) {
     return;
@@ -255,9 +260,16 @@ canvas.addEventListener("pointerdown", (event) => {
   isDrawing = true;
   pushUndo();
   paintAt(cell.x, cell.y);
-});
+  },
+  { passive: false }
+);
 
-canvas.addEventListener("pointermove", (event) => {
+canvas.addEventListener(
+  "pointermove",
+  (event) => {
+    if (isDrawing) {
+      event.preventDefault();
+    }
   const cell = getCellFromEvent(event);
   if (!cell) {
     return;
@@ -266,7 +278,9 @@ canvas.addEventListener("pointermove", (event) => {
   if (isDrawing) {
     paintAt(cell.x, cell.y);
   }
-});
+  },
+  { passive: false }
+);
 
 canvas.addEventListener("pointerup", (event) => {
   canvas.releasePointerCapture(event.pointerId);
