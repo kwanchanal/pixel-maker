@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enjoy Pixel Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="workspace">
+      <aside class="panel tools">
+        <h2>Tools</h2>
+
+        <div class="field">
+          <label for="color-picker">Color</label>
+          <input id="color-picker" type="color" value="#ff4d6d" />
+        </div>
+
+        <div class="field">
+          <label>Palette</label>
+          <div class="palette" id="palette"></div>
+        </div>
+
+        <div class="field">
+          <label>Tool</label>
+          <div class="segmented" id="tool-buttons">
+            <button class="active" data-tool="brush" type="button">Brush</button>
+            <button data-tool="eraser" type="button">Eraser</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="brush-size">Brush</label>
+          <input id="brush-size" type="range" min="1" max="5" value="1" />
+          <div class="hint">Size: <span id="brush-size-label">1</span></div>
+        </div>
+
+        <div class="field">
+          <label for="grid-size">Grid</label>
+          <div class="row">
+            <select id="grid-size">
+              <option value="16">16 x 16</option>
+              <option value="32">32 x 32</option>
+              <option value="64" selected>64 x 64</option>
+              <option value="96">96 x 96</option>
+            </select>
+            <button id="new-grid" type="button">New</button>
+          </div>
+          <label class="toggle">
+            <input id="grid-toggle" type="checkbox" checked />
+            <span>Show grid</span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="zoom">Zoom</label>
+          <input id="zoom" type="range" min="6" max="24" value="12" />
+          <div class="hint">Pixel: <span id="zoom-label">12</span>px</div>
+        </div>
+
+        <div class="field">
+          <label>Quick actions</label>
+          <div class="row">
+            <button id="clear" type="button">Clear</button>
+            <button id="fill" type="button">Fill</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="field">
+          <label>Reference layer</label>
+          <input id="layer-image" type="file" accept="image/*" />
+          <div class="row">
+            <button id="layer-toggle" type="button">Hide</button>
+            <button id="layer-clear" type="button">Remove</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="layer-opacity">Layer opacity</label>
+          <input id="layer-opacity" type="range" min="0" max="100" value="45" />
+          <div class="hint">Opacity: <span id="layer-opacity-label">45</span>%</div>
+        </div>
+
+        <div class="field">
+          <label for="layer-zoom">Layer zoom</label>
+          <input id="layer-zoom" type="range" min="25" max="300" value="100" />
+          <div class="hint">Zoom: <span id="layer-zoom-label">100</span>%</div>
+        </div>
+
+        <div class="field">
+          <label for="layer-rotate">Layer rotate</label>
+          <input id="layer-rotate" type="range" min="-180" max="180" value="0" />
+          <div class="hint">Angle: <span id="layer-rotate-label">0</span>°</div>
+        </div>
+      </aside>
+
+      <section class="canvas-wrap">
+        <div class="canvas-frame">
+          <div class="canvas-stack">
+            <canvas id="pixel-canvas"></canvas>
+            <canvas id="layer-canvas"></canvas>
+          </div>
+        </div>
+        <div class="status">
+          <span id="coords">x: 0 y: 0</span>
+          <span id="help">B Brush · E Erase · [ ] Size · ⌘Z Undo</span>
+        </div>
+      </section>
+
+      <div class="side-stack">
+        <aside class="panel about">
+          <h2>About</h2>
+          <img class="about-image" src="asset/pasted-image.png" alt="Reference image" />
+          <p class="about-text">Hope you enjoy creating like me!</p>
+        </aside>
+
+      <aside class="panel export">
+        <h2>Export</h2>
+        <div class="hint export-tip">Tip: Save JSON to keep editable data. PNG is for sharing.</div>
+        <div class="field">
+          <button id="save-png" type="button">Save PNG</button>
+          <button id="save-json" type="button">Save JSON</button>
+        </div>
+        <div class="field">
+          <label for="load-json">Load JSON</label>
+          <input id="load-json" type="file" accept="application/json" />
+        </div>
+        <div class="preview">
+          <canvas id="mini-preview" width="128" height="128"></canvas>
+          <div class="hint">Preview</div>
+        </div>
+      </aside>
+      </div>
+    </main>
+
+
+    <script src="app.js"></script>
+  </body>
+</html>
