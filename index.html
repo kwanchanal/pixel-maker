@@ -39,6 +39,7 @@
           <div class="segmented" id="tool-buttons">
             <button class="active" data-tool="brush" type="button">Brush</button>
             <button data-tool="eraser" type="button">Eraser</button>
+            <button data-tool="select" type="button">Select</button>
           </div>
         </div>
 
@@ -74,8 +75,23 @@
         <div class="field">
           <label>Quick actions</label>
           <div class="row">
+            <button id="undo" type="button" disabled>Undo</button>
             <button id="clear" type="button">Clear</button>
             <button id="fill" type="button">Fill</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Selection</label>
+          <div class="row wrap">
+            <button id="copy-selection" type="button" disabled>Copy</button>
+            <button id="paste-selection" type="button" disabled>Paste</button>
+            <button id="scale-up-selection" type="button" disabled>Scale +</button>
+            <button id="scale-down-selection" type="button" disabled>Scale -</button>
+            <button id="rotate-left-selection" type="button" disabled>Rotate L</button>
+            <button id="rotate-right-selection" type="button" disabled>Rotate R</button>
+            <button id="flip-h-selection" type="button" disabled>Flip H</button>
+            <button id="flip-v-selection" type="button" disabled>Flip V</button>
           </div>
         </div>
 
@@ -85,6 +101,7 @@
           <label>Reference layer</label>
           <input id="layer-image" type="file" accept="image/*" />
           <div class="row">
+            <button id="layer-adjust" type="button" aria-pressed="false">Adjust</button>
             <button id="layer-toggle" type="button">Hide</button>
             <button id="layer-clear" type="button">Remove</button>
           </div>
@@ -118,7 +135,7 @@
         </div>
         <div class="status">
           <span id="coords">x: 0 y: 0</span>
-          <span id="help">B Brush · E Erase · [ ] Size · ⌘Z Undo</span>
+          <span id="help">B Brush · E Erase · S Select · Ctrl/⌘C Copy · Ctrl/⌘V Paste · Ctrl/⌘Z Undo</span>
         </div>
       </section>
 

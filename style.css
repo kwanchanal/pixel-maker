@@ -188,7 +188,7 @@ body {
 
 .segmented {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
@@ -212,14 +212,38 @@ button {
   transform: translateY(-1px);
 }
 
+button.active {
+  border-color: var(--accent-2);
+  background: #13202a;
+}
+
 button:hover {
   transform: translateY(-1px);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+button:disabled:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: none;
+}
+
 .row {
   display: flex;
   gap: 8px;
+}
+
+.row.wrap {
+  flex-wrap: wrap;
+}
+
+.row.wrap button {
+  flex: 1 1 86px;
 }
 
 select,
@@ -290,6 +314,18 @@ input[type="file"]::file-selector-button {
   background: #0a0c10;
   border-radius: 12px;
   touch-action: none;
+}
+
+.canvas-stack.is-adjusting-layer #pixel-canvas {
+  cursor: grab;
+}
+
+.canvas-stack.is-adjusting-layer #pixel-canvas:active {
+  cursor: grabbing;
+}
+
+.canvas-stack.is-selecting-pixels #pixel-canvas {
+  cursor: crosshair;
 }
 
 #layer-canvas {
